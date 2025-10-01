@@ -1,0 +1,16 @@
+{
+    "_id":{ "$oid":"68dbb646cd0311d6137aa706"},
+    "name": "Opticas.sl",
+    "address": {
+        "street": "Reina sofia,120",
+        "number": 3,
+        "floor": 4,
+        "door": "B",
+        "city": "Barcelona",
+        "postal_code": "08025",
+        "country": "Spain"
+    },
+    "telephone": 654471258,
+    "fax" : 975547111,
+    "nif": "79985547L"
+}

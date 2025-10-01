@@ -1,0 +1,21 @@
+    {
+        "_id": {  "$oid": "68dbb62bcd0311d6137aa704"
+        },
+        "name": "Juan Cruz",
+        "address": "Right Street,123",
+        "telephone": 678921235,
+        "email": "email@email.com",
+        "register_date": {"$date": "2023-09-23T00:00:00Z"},
+        "recommended_by": null,
+        "purchases": [
+            {
+                "_id":{ "$oid":"68dcf00f372a86affc8131b4"},
+                "left_graduation": 2.1,
+                "right_graduation": 1.5,
+                "left_glass_color": "green",
+                "right_glass_color": "blue",
+                "purchase_date": { "$date":"2023-04-13T00:00:00Z"}  
+                
+            }
+        ]
+    }

@@ -1,0 +1,14 @@
+
+
+
+    {
+        "_id":{ "$oid":"68dcf00f372a86affc8131b4"},
+        "brand": "Rayban",
+        "frame_type": "Metallic",
+        "proveedor_id": { "$oid": "68dbb646cd0311d6137aa706"},   
+
+        "price": 115.50,
+        "cliente_id" : {"$oid": "68dbb62bcd0311d6137aa704"},
+        "empleado_id" : { "$oid": "68dc6b6fcd0311d6137aa71d"}
+
+        }
