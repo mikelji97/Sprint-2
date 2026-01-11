@@ -93,16 +93,17 @@ SELECT DISTINCT p.id AS Numero, p.nombre AS Nombre, p.apellido1 AS 'Primer apell
 -- Resuelve las 6 siguientes consultas utilizando las cláusulas LEFT JOIN y RIGHT JOIN --
 
 -- 1 --
-SELECT d.nombre AS Departamento, pr.apellido1 AS 'Primer apellido', pr.apellido2 AS 'Segundo apellido', pr.nombre AS Nombre FROM profesor p LEFT JOIN departamento d ON p.id_departamento = d.id LEFT JOIN persona pr ON p.id_profesor = pr.id ORDER BY d.nombre ASC, pr.apellido1 ASC, pr.apellido2 ASC, pr.nombre ASC;
+SELECT d.nombre AS Departamento, p.apellido1 AS 'Primer apellido', p.apellido2 AS 'Segundo apellido', p.nombre AS Nombre FROM persona p JOIN profesor pr ON p.id = pr.id_profesor LEFT JOIN departamento d ON pr.id_departamento = d.id WHERE p.tipo = 'profesor'ORDER BY d.nombre ASC, p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
 -- 2 --
-SELECT p.apellido1 AS 'Primer apellido', p.apellido2 AS 'Segundo apellido',p.nombre AS Nombre FROM persona p JOIN profesor pr ON pr.id_profesor = p.id LEFT JOIN departamento d ON pr.id_departamento = d.id WHERE d.id IS NULL; 
+SELECT p.apellido1 AS 'Primer apellido', p.apellido2 AS 'Segundo apellido', p.nombre AS Nombre FROM persona p LEFT JOIN profesor pr ON pr.id_profesor = p.id LEFT JOIN departamento d ON pr.id_departamento = d.id WHERE p.tipo = 'profesor' AND pr.id_departamento IS NULL; 
 -- 3 --
 SELECT dp.nombre AS Departamento, pr.id_profesor AS 'Id Profesor' FROM departamento dp LEFT JOIN profesor pr ON dp.id = pr.id_departamento WHERE pr.id_profesor IS NULL;
 -- 4 --
-SELECT p.nombre AS Nombre, p.apellido1 AS 'Primer apellido', p.apellido2 AS 'Segundo apellido',a.nombre AS asignatura, p.tipo AS Tipo FROM persona p  JOIN profesor pr ON p.id = pr.id_profesor LEFT JOIN asignatura a ON a.id_profesor = pr.id_profesor WHERE a.id IS NULL;
+SELECT p.apellido1, p.apellido2, p.nombre, a.id AS id_asignatura, a.nombre AS nombre_asignatura FROM persona p LEFT JOIN asignatura a ON a.id_profesor = p.id WHERE p.tipo = 'profesor' AND a.id IS NULLORDER BY p.apellido1, p.apellido2, p.nombre;
 -- 5 --
 SELECT a.nombre FROM asignatura a LEFT JOIN profesor p ON a.id_profesor = p.id_profesor WHERE p.id_profesor IS NULL;
-
+-- 6 --
+SELECT DISTINCT d.nombre AS Departamento FROM departamento d LEFT JOIN profesor p ON d.id = p.id_departamento LEFT JOIN asignatura a ON p.id_profesor = a.id_profesorLEFT JOIN alumno_se_matricula_asignatura am ON a.id = am.id_asignaturaWHERE am.id_asignatura IS NULL;
 
 -- Consultas generales --
 
@@ -123,8 +124,8 @@ SELECT gr.nombre AS Grado, a.tipo AS 'Tipo asignatura', SUM(a.creditos) AS 'Tota
 -- 8 --
 SELECT ce.anyo_inicio AS 'Año de inicio', COUNT(DISTINCT p.id) AS Alumnos FROM persona p JOIN alumno_se_matricula_asignatura am ON am.id_alumno = p.id JOIN curso_escolar ce ON ce.id = am.id_curso_escolar GROUP BY ce.anyo_inicio;
 --9--
-
---10--
-
+SELECT pr.id_profesor AS id, p.nombre AS Nombre, p.apellido1 AS 'Primer Apellido', p.apellido2 AS 'Aegundo apellido', COUNT(a.id) AS 'Número de Asignaturas' FROM persona p LEFT JOIN profesor pr ON p.id = pr.id_profesorLEFT JOIN asignatura a ON pr.id_profesor = a.id_profesorWHERE p.tipo = 'profesor'GROUP BY pr.id_profesor, p.nombre, p.apellido1, p.apellido2 ORDER BY COUNT(a.id) DESC;
+-- 10 --
+SELECT * FROM persona WHERE persona.fecha_nacimiento = (SELECT MAX(fecha_nacimiento) FROM persona WHERE tipo = 'alumno');
 --11--
-
+SELECT p.apellido1 AS 'Primer apellido', p.apellido2 AS 'Segundo apellido', p.nombre AS Nombre FROM persona p INNER JOIN profesor pr ON pr.id_profesor = p.id INNER JOIN departamento d ON d.id = pr.id_departamento LEFT JOIN asignatura a ON a.id_profesor = pr.id_profesor WHERE a.id IS NULL;
