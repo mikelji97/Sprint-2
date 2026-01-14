@@ -3,5 +3,4 @@
     "name": "Alberto Limon",
     "telephone": 645778123,
     "email": "laimon@gmail.com",
-    "ventas":{ "_id":{ "$oid":"68dcf00f372a86affc8131b4"}}
 }
