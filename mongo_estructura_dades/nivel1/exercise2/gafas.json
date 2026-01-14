@@ -2,13 +2,14 @@
 
 
     {
-        "_id":{ "$oid":"68dcf00f372a86affc8131b4"},
-        "brand": "Rayban",
-        "frame_type": "Metallic",
-        "proveedor_id": { "$oid": "68dbb646cd0311d6137aa706"},   
-
-        "price": 115.50,
-        "cliente_id" : {"$oid": "68dbb62bcd0311d6137aa704"},
-        "empleado_id" : { "$oid": "68dc6b6fcd0311d6137aa71d"}
-
-        }
+    "_id": { "$oid": "68dcf00f372a86affc8131b4" },
+    "brand": "Rayban",
+    "left_graduation": 2.1,          
+    "right_graduation": 1.5,         
+    "frame_type": "Metallic",
+    "frame_color": "black",          
+    "left_glass_color": "green",    
+    "right_glass_color": "blue",      
+    "price": 115.50,
+    "proveedor_id": { "$oid": "68dbb646cd0311d6137aa706" }
+}
