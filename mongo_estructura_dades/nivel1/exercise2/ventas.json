@@ -1,0 +1,7 @@
+{
+    "_id": { "$oid": "68dcf00f372a86affc8131b5" },
+    "gafas_id": { "$oid": "68dcf00f372a86affc8131b4" },
+    "cliente_id": { "$oid": "68dbb62bcd0311d6137aa704" },
+    "empleado_id": { "$oid": "68dc6b6fcd0311d6137aa71d" },
+    "purchase_datetime": { "$date": "2023-04-13T10:30:00Z" }
+}
